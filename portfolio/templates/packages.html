@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "head.html" %}
+{% include "navbar.html" %}
+
+<body style="background-image: url('../media/IMG_0748.jpg');
+background-repeat:no-repeat;
+background-size:cover;
+background-position: center center;">
+
+  <main>
+    <!-- /Start your project here-->
+    <div class="container mt-5 d-flex flex-column align-items-center">
+      {% for package in packages %}
+      {% if package.contact_for_details is False %}
+      <div class="card m-2 mb-5 w-50" style="background: #D0D0D0;" id="{{package.name}}">
+        <div class="card-body d-flex justify-content-center align-items-center flex-column">
+          <h4 class="card-title mb-3" style="border-bottom: black 1px solid; width: 100%; text-align: center;">{{package.name}}</h4>
+          <p class="card-text mb-5">{{package.duration}}</p>
+          <p class="card-text mb-5">{{package.num_of_images}} Edited Images</p>
+          <p class="card-text mb-5">{{package.delivery_method}}</p>
+          <p class="card-text" style="font-weight: 900;">${{package.price}}</p>
+        </div>
+      </div>
+      {% else %}
+      <div class="card m-2 w-50" style="background: #D0D0D0;" id="{{package.name}}">
+        <div class="card-body d-flex justify-content-center align-items-center flex-column">
+          <h4 class="card-title" style="border-bottom: black 1px solid; width: 100%; text-align: center;">{{package.name}}</h5>
+          <p class="card-text" style="font-weight: 900;" >Starting at ${{package.price}}</p>
+          <p class="card-text">Contact me for more details!</p>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+
+  </main>
+  {% include "footer_no_quote.html" %}
+
+  <div class="dotted-scrollspy clearfix d-none d-sm-block">
+    <ul class="nav smooth-scroll flex-column">
+      {% for package in packages %}
+      <li class="nav-item"><a class="nav-link" href="#{{package.name}}"><span></span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% include "scripts.html" %}
+</body>
+<script>
+  let images = "{{images}}"
+  images = JSON.parse(images);
+  console.log('images', images);
+  const header = document.getElementById('header');
+    // setTimeout(() => {
+    //     header.style.backgroundImage = `url(${images[0]['fields']['image']['url']})`;
+    // }, 1000);
+
+</script>
+<script>
+  window.onscroll = function () { myFunction() };
+
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+
+</script>
+
+</html>

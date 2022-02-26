@@ -1,11 +1,9 @@
 from django.shortcuts import render
 from django.core.mail import EmailMessage
 
-from ..models.Images import Images
+from ..models.Image import Image
 
 def home_page(request):
-    images = Images.objects.filter(location="HO").order_by("order")
-    print(len(images))
 
     if request.method == "POST":
         name = request.POST.get("name")
@@ -21,7 +19,4 @@ def home_page(request):
         )
         email_message.send()
 
-    context = {
-      "images": images,
-      }
-    return render(request, "index.html", context)
+    return render(request, "index.html")

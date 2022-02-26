@@ -3,26 +3,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include "head.html" %}
-{% include "header.html" %}
+  {% include "head.html" %}
+  {% include "navbar.html" %}
+  {% include "header_cover.html" %}
+
 <body>
 
   <!-- Start your project here-->
   <main>
-    <div class="container-fluid mt-5 pt-5">
-    {% include "mywork.html" %}
+    <!-- /Start your project here-->
+    <div class="container" id="about">
+      {% include "about.html" %}
+      <hr class="between-sections">
+      {% include "contact.html" %}
     </div>
-
-  <!-- /Start your project here-->
-<div class="container" id="about">
-  {% include "about.html" %}
-<hr class="between-sections">
-  {% include "contact.html" %}
-</div>
 
 
   </main>
-{% include "footer.html" %}
+  {% include "footer_quote.html" %}
 
   <div class="dotted-scrollspy clearfix d-none d-sm-block">
     <ul class="nav smooth-scroll flex-column">
@@ -34,5 +32,30 @@
 
   {% include "scripts.html" %}
 </body>
+<script>
+    let images = "{{images}}"
+    images = JSON.parse(images);
+    console.log('images', images);
+    const header = document.getElementById('header');
+    // setTimeout(() => {
+    //     header.style.backgroundImage = `url(${images[0]['fields']['image']['url']})`;
+    // }, 1000);
+
+</script>
+<script>
+  window.onscroll = function () { myFunction() };
+
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+
+</script>
 
 </html>

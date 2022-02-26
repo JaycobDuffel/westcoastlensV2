@@ -1,11 +1,9 @@
 from django.shortcuts import render
-from django.core.mail import EmailMessage
-from django.core import serializers
 
-from ..models.Images import Images
+from ..models.Image import Image
 
 def packages_page(request):
-    images = Images.objects.filter(location="HO").order_by("order")
+    images = Image.objects.filter(location="HO").order_by("order")
 
     print(len(images))
 

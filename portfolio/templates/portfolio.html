@@ -1,0 +1,111 @@
+<section class="section" id="mywork">
+
+  {% load static %}
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  {% include "head.html" %}
+  {% include "navbar.html" %}
+
+  <body style="background-image: url('../media/IMG_0748.jpg');
+background-repeat:no-repeat;
+background-size:cover;
+background-position: center center;">
+
+    <main>
+      <!-- /Start your project here-->
+      <div class="container mt-5 d-flex flex-column align-items-center">
+        {% for category in categories %}
+        {% if category.image.image %}
+        <div class="card m-2 mb-5 mt-5 w-50 portfolio-links" style="background: #D0D0D0;" id="{{category.url}}">
+          <div class="card-body d-flex justify-content-center align-items-center flex-column">
+            <img src="{{category.image.image.url}}" style="
+              min-width:400px;
+              max-width:400px;
+              border-radius: 3%;" />
+            <h4 class="card-title pt-3" style="text-align: center;">
+              {{category.name}}</h4>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+
+
+    </main>
+    {% include "footer_no_quote.html" %}
+
+    <div class="dotted-scrollspy clearfix d-none d-sm-block">
+      <ul class="nav smooth-scroll flex-column">
+        {% for package in packages %}
+        <li class="nav-item"><a class="nav-link" href="#{{package.name}}"><span></span></a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% include "scripts.html" %}
+  </body>
+  <script>
+    let images = "{{images}}"
+    images = JSON.parse(images);
+    console.log('images', images);
+    const header = document.getElementById('header');
+    // setTimeout(() => {
+    //     header.style.backgroundImage = `url(${images[0]['fields']['image']['url']})`;
+    // }, 1000);
+
+  </script>
+  <script>
+    window.onscroll = function () { myFunction() };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+
+    $(document).ready(function() {
+       $('.portfolio-links').click(function() {
+
+         window.location.href = `/portfolio/${$(this).attr('id')}/`;
+       });
+  });
+
+  </script>
+
+  </html>
+
+  <!-- <div class="row wow FadeIn" data-wow-delay="0.4s">
+    <div class="col-md-12">
+      <div id="mdb-lightbox-ui">
+        <div class="mdb-lightbox">
+          {% for img in images %}
+                {% if img.image %}
+          <figure class="col-md-4">
+            <img src="{{img.image.url}}" alt="{{img.alt}}"
+            style="min-height:300px;
+            max-height:300px;
+            min-width:500px;
+            max-width:500px;">
+          </figure>
+          {% elif img.link %}
+            <figure class="col-md-4">
+              <img src="{{img.link}}" alt="{{img.alt}}"
+              style="min-height:300px;
+              max-height:300px;
+              min-width:500px;
+              max-width:500px;">
+            </figure>
+                {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div> -->
+</section>
