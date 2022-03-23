@@ -8,10 +8,10 @@
   {% include "head.html" %}
   {% include "navbar.html" %}
 
-  <body style="background-image: url('../media/IMG_0748.jpg');
-background-repeat:no-repeat;
-background-size:cover;
-background-position: center center;">
+  <body style="background-image: url({{background.image.url}});
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position: center;">
 
     <main>
       <!-- /Start your project here-->
@@ -24,7 +24,7 @@ background-position: center center;">
               min-width:400px;
               max-width:400px;
               border-radius: 3%;" />
-            <h4 class="card-title pt-3" style="text-align: center;">
+            <h4 class="card-title pt-3 mb-0" style="text-align: center;">
               {{category.name}}</h4>
           </div>
         </div>
@@ -51,9 +51,6 @@ background-position: center center;">
     images = JSON.parse(images);
     console.log('images', images);
     const header = document.getElementById('header');
-    // setTimeout(() => {
-    //     header.style.backgroundImage = `url(${images[0]['fields']['image']['url']})`;
-    // }, 1000);
 
   </script>
   <script>
@@ -70,42 +67,17 @@ background-position: center center;">
       }
     }
 
-    $(document).ready(function() {
-       $('.portfolio-links').click(function() {
+    $(document).ready(function () {
+      $('.portfolio-links').hover(function () {
+        $(this).css('cursor', 'pointer');
+      });
 
-         window.location.href = `/portfolio/${$(this).attr('id')}/`;
-       });
-  });
+      $('.portfolio-links').click(function () {
+        window.location.href = `/portfolio/${$(this).attr('id')}/`;
+      });
+    });
 
   </script>
 
   </html>
-
-  <!-- <div class="row wow FadeIn" data-wow-delay="0.4s">
-    <div class="col-md-12">
-      <div id="mdb-lightbox-ui">
-        <div class="mdb-lightbox">
-          {% for img in images %}
-                {% if img.image %}
-          <figure class="col-md-4">
-            <img src="{{img.image.url}}" alt="{{img.alt}}"
-            style="min-height:300px;
-            max-height:300px;
-            min-width:500px;
-            max-width:500px;">
-          </figure>
-          {% elif img.link %}
-            <figure class="col-md-4">
-              <img src="{{img.link}}" alt="{{img.alt}}"
-              style="min-height:300px;
-              max-height:300px;
-              min-width:500px;
-              max-width:500px;">
-            </figure>
-                {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div> -->
 </section>

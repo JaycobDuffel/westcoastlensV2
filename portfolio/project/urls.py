@@ -11,6 +11,10 @@ urlpatterns = [
     path("", home.home_page, name="home"),
     path("packages/", packages.packages_page, name="packages"),
     path("portfolio/", portfolio.portfolio_page, name="portfolio"),
+    path("portfolio/portraits/", portfolio.portrait_page, name="portraits"),
+    path("portfolio/couplesandengagement/", portfolio.couples_page, name="couplesandengagement"),
+    path("portfolio/weddingandelopement/", portfolio.wedding_page, name="weddingandelopement"),
+    path("portfolio/boudoir/", portfolio.boudoir_page, name="boudoir"),
 
 ]
 

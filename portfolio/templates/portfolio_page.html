@@ -1,0 +1,79 @@
+<section class="section">
+
+  {% load static %}
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  {% include "head.html" %}
+  {% include "navbar.html" %}
+
+  <body style="background-image: url({{background.image.url}});
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position: center;">
+
+    <main>
+      <!-- /Start your project here-->
+      <div class="container mt-5 d-flex flex-column align-items-center">
+        {% for image in images %}
+        {% if image.image %}
+        {% if forloop.counter == 1 %}
+        <div class="m-2 mb-3 mt-3 w-75" style="background: transparent;">
+          <img
+          src="{{image.image.url}}"
+          class="img-fluid main-photo"
+          />
+        </div>
+        {% elif forloop.counter|divisibleby:2 %}
+        <div class="m-2 mb-3 mt-3 align-self-end d-flex align-items-end" style="background: transparent;">
+          <div class="left-arrow"></div>
+          <img
+          src="{{image.image.url}}"
+          class="left-photo"
+          />
+        </div>
+        {% else %}
+        <div class="m-2 mb-3 mt-3 w-50 align-self-start d-flex align-items-start picture-position" style="background: transparent;">
+          <img
+          src="{{image.image.url}}"
+          class="right-photo"
+          />
+          <div class="right-arrow"></div>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+
+
+    </main>
+    {% include "footer_no_quote.html" %}
+
+    {% include "scripts.html" %}
+  </body>
+  <script>
+    let images = "{{images}}"
+    images = JSON.parse(images);
+    console.log('images', images);
+    const header = document.getElementById('header');
+
+  </script>
+  <script>
+    window.onscroll = function () { myFunction() };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+
+  </script>
+
+  </html>
+</section>

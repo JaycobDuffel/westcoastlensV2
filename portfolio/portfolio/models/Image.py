@@ -8,6 +8,7 @@ class Image(models.Model):
     order = models.IntegerField(default=0)
 
     page_names = [
+        ('BG', 'Background'),
         ('HO', 'Home'),
         ('PO', 'Portfolio'),
         ('POR', 'Portraits'),

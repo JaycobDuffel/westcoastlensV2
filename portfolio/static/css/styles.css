@@ -1,0 +1,44 @@
+.left-arrow {
+  position: relative;
+  top: 50%;
+  left: 375px;
+  width: 0; 
+  height: 0; 
+  border-top: 200px solid transparent;
+  border-bottom: 200px solid transparent;
+  border-right: 700px solid rgba(128,128,128, .4);
+  z-index: -1;
+}
+.right-arrow {
+  position: relative;
+  right: 375px;
+  width: 0; 
+  height: 0;
+  border-top: 200px solid transparent;
+  border-bottom: 200px solid transparent;
+  border-left: 700px solid rgba(128,128,128, .4);
+  z-index: -1;
+}
+
+.left-photo {
+  min-height: 337.5px;
+  max-height: 337.5px;
+  position: relative;
+  bottom: 31.25px;
+  min-width:600px;
+  max-width:600px;
+  border-radius: 15px;
+}
+
+.right-photo {
+  max-height: 337.5px;
+  position: relative;
+  top: 31.25px;
+  min-width:600px;
+  max-width:600px;
+  border-radius: 15px;
+}
+
+.main-photo {
+  border-radius: 15px;
+}

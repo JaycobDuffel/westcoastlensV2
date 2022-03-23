@@ -33,16 +33,6 @@
   {% include "scripts.html" %}
 </body>
 <script>
-    let images = "{{images}}"
-    images = JSON.parse(images);
-    console.log('images', images);
-    const header = document.getElementById('header');
-    // setTimeout(() => {
-    //     header.style.backgroundImage = `url(${images[0]['fields']['image']['url']})`;
-    // }, 1000);
-
-</script>
-<script>
   window.onscroll = function () { myFunction() };
 
   var navbar = document.getElementById("navbar");
